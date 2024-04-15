@@ -1,0 +1,33 @@
+# Ignore all C++ object files
+*.o
+*.lo
+*.la
+# Ignore all C++ .so files
+*.so
+# Ignore all C++ .a files
+*.a
+# Ignore all C++ .dll files
+*.dll
+# Ignore all C++ .dylib files
+*.dylib
+# Ignore all C++ .exe files
+*.exe
+# Ignore all C++ .out files
+*.out
+# Ignore all C++ .app files
+*.app
+
+# Ignore CMake build files
+CMakeCache.txt
+CMakeFiles/
+CMakeScripts/
+*.cmake
+Makefile
+*.make
+*.cbp
+*.depends
+*.layout
+*.sln
+*.suo
+*.vcxproj
+*.vcxproj.filters
