@@ -15,6 +15,8 @@
   * **Punteros**:
     * [Punteros clásicos](./temario/variables/punteros.md)
     * Punteros inteligentes.
+        * [Unique Pointers](./temario/smartpointers.md)
+        * [Shared Pointers](./temario/smartpointersii.md)
 
 * **Entrada y salida de datos**
   * [Salida por pantalla: _std::cout_](./temario/inout/cincout.md)
@@ -51,16 +53,10 @@
    * [Constructor](./temario/clasesIII.md) y destructor
    * [Gestión de errores con excepciones](./temario/excepciones.md).
    
-
  * **Herencia**
    * [Clases padres y clases hijas](./temario/herencia.md)
    * [Constructor/Destructor del hijo y del padre](./temario/herenciaII.md).
    * [Herencia pública, progegida y privada](./temario/herenciaIII.md).
-
- * **Lección extra - Smart Pointers**
-   * [Unique Pointers](./temario/smartpointers.md)
-   * [Shared Pointers](./temario/smartpointersii.md)
-   
 
  * **Polimorfismo**
    * [Funciones virtuales y polimórficas](./temario/polimorfismo.md).
