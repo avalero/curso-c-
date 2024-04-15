@@ -80,3 +80,5 @@
    * Algortimos de búsqueda en grafos templatizados.
      * Dijkstra
      * A*
+
+# [Sesiones del curso](./SESIONES.md)
