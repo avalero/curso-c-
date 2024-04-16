@@ -1,7 +1,0 @@
-/home/avalero/Documents/cursos/cursocpp/ejemplos_clases/hola_mundo/CMakeFiles/hola_mundo.dir
-/home/avalero/Documents/cursos/cursocpp/ejemplos_clases/hola_mundo/CMakeFiles/edit_cache.dir
-/home/avalero/Documents/cursos/cursocpp/ejemplos_clases/hola_mundo/CMakeFiles/rebuild_cache.dir
-/home/avalero/Documents/cursos/cursocpp/ejemplos_clases/hola_mundo/CMakeFiles/list_install_components.dir
-/home/avalero/Documents/cursos/cursocpp/ejemplos_clases/hola_mundo/CMakeFiles/install.dir
-/home/avalero/Documents/cursos/cursocpp/ejemplos_clases/hola_mundo/CMakeFiles/install/local.dir
-/home/avalero/Documents/cursos/cursocpp/ejemplos_clases/hola_mundo/CMakeFiles/install/strip.dir
