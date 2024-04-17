@@ -23,4 +23,4 @@
 * **Cadenas de texto**
     * [std::string](./temario/datosstd/string.md)
     * **Ejemplos**
-      * [std::string](./ejemplos/datosstd/string/)
+      * [tokenizar string por ( )](./ejemplos/string/)
