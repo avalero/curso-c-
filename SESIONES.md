@@ -20,3 +20,7 @@
     * [Funciones templatizadas](temario/funcionestempl.md)
     * **Ejemplos**
       * [Funciones templatizadas](./ejemplos/funciones/composicion/sortWithTemplates/)
+* **Cadenas de texto**
+    * [std::string](./temario/datosstd/string.md)
+    * **Ejemplos**
+      * [std::string](./ejemplos/datosstd/string/)
