@@ -22,5 +22,4 @@
       * [Funciones templatizadas](./ejemplos/funciones/composicion/sortWithTemplates/)
 * **Cadenas de texto**
     * [std::string](./temario/datosstd/string.md)
-    * **Ejemplos**
-      * [tokenizar string por ( )](./ejemplos/string/)
+
