@@ -24,6 +24,11 @@
     * [std::string](./temario/datosstd/string.md)
 
 ### Semana 2
- * **Estrucutras de datos**
+ * **Estrucutras de datos y algoritmos**
   * [Lista Simple](./ejemplos/listas/lista_simple/)
   * [Lista Doble](./ejemplos/listas/lista_doble/)
+  * [Algoritmo de la burbuja]
+  * [Algoritmo de búsqueda en listas ordenadas]
+
+ * **Tests unitarios**
+  * [Google Test]
