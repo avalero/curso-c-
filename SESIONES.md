@@ -23,3 +23,7 @@
 * **Cadenas de texto**
     * [std::string](./temario/datosstd/string.md)
 
+### Semana 2
+ * **Estrucutras de datos**
+  * [Lista Simple](./ejemplos/listas/lista_simple/)
+  * [Lista Doble](./ejemplos/listas/lista_doble/)
