@@ -64,6 +64,7 @@ shared_ptr<Node<T>> filter(shared_ptr<Node<T>> const &pHead, function<bool(T con
         push(newHead, it);
     }
   }
+  return newHead;
 }
 
 struct Person
