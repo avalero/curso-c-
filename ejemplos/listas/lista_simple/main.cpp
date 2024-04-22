@@ -56,7 +56,7 @@ shared_ptr<Node<T>> filter(shared_ptr<Node<T>> const &pHead, function<bool(T con
   shared_ptr<Node<T>> newHead = nullptr;
   for (auto it = pHead; it != nullptr; it = it->pNext)
   {
-    if (f(*(p->pData)))
+    if (f(*(it->pData)))
     {
       if (newHead == nullptr)
         newHead = it;
