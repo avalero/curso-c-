@@ -31,4 +31,4 @@
   * [Algoritmo de búsqueda en listas ordenadas]
 
  * **Tests unitarios**
-  * [Google Test]
+  * [Google Tests]
