@@ -6,6 +6,6 @@
 
 using namespace std;
 
-vector<string> splitString(string const &s, char const &delimiter);
+vector<string> splitString(string const &s, char const &delimiter=' ');
 
 #endif // SPLITSTRING_H
