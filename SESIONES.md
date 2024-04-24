@@ -25,11 +25,12 @@
 
 ### Semana 2
  * **Estrucutras de datos y algoritmos**
-  * [Lista Simple](./ejemplos/listas/lista_simple/)
-  * [Lista Doble](./ejemplos/listas/lista_doble/)
-  * [Algoritmo de la burbuja]
-  * [Algoritmo de búsqueda en listas ordenadas]
+    * [Lista Simple](./ejemplos/listas/lista_simple/)
+    * [Lista Doble](./ejemplos/listas/lista_doble/)
+    * [Algoritmo de la burbuja]
+    * [Algoritmo de búsqueda en listas ordenadas]
 
  * **Tests unitarios**
-  * [Google Tests](./ejemplos/tests/) 
-  * [Documentación](https://github.com/google/googletest)
+    * [Google Tests](./ejemplos/tests/) 
+    * [Documentación](https://github.com/google/googletest)
+    * [Ejemplos de Google - recomendable](https://github.com/google/googletest/tree/main/googletest/samples)
