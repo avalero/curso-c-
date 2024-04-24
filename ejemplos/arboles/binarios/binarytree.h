@@ -54,3 +54,30 @@ shared_ptr<Node<T>> insert(T const &data, shared_ptr<Node<T>> &root, function<bo
   }
   return root;
 }
+
+template <typename T>
+shared_ptr<Node<T>> find(T const &data, shared_ptr<Node<T>> const &root, function<bool(T const &, T const &)> f = [](T const &a, T const &b)
+                                                                         { return a == b; },
+                         function<bool(T const &, T const &)> gt = [](T const &a, T const &b)
+                         { return a > b; })
+{
+  if (root == nullptr)
+  {
+    return nullptr;
+  }
+  else
+  {
+    if (f(data, *root->pData))
+    {
+      return root;
+    }
+    else if (gt(data, *root->pData))
+    {
+      return find<T>(data, root->pRight, gt);
+    }
+    else
+    {
+      return find<T>(data, root->pLeft, gt);
+    }
+  }
+}
