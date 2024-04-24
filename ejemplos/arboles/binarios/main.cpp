@@ -26,44 +26,49 @@ struct Node
  *
  */
 template <typename T>
-shared_ptr<Node<T>> insert(T data, shared_ptr<Node<T>> &root, function<bool(T const &, T const &)> gt = [](T const &a, T const &b)
-                                                              { return a > b; })
+shared_ptr<Node<T>> insert(T const &data, shared_ptr<Node<T>> &root, function<bool(T const &, T const &)> gt = [](T const &a, T const &b)
+                                                                     { return a > b; })
 {
   if (root == nullptr)
   {
-    root = Node(data);
+    root = make_shared<Node<T>>(Node<T>(data));
     return root;
   }
   else
   {
-    if (gt(data, *(root->data)))
+    if (gt(data, *root->pData))
     {
-      if (root->pRight == nullptr)
-      {
-        root->pRight = Node(data);
-        return root->pRight;
-      }
-      else
-      {
-        return insert(root->pRight);
-      }
+      root->pRight = insert<T>(data, root->pRight, gt);
+      return root->pRight;
     }
     else
     {
-      if (root->pLeft == nullptr)
-      {
-        root->pLeft == Node(data);
-        return root->pLeft;
-      }
-      else
-      {
-        return insert(root->pLeft);
-      }
+      root->pLeft = insert<T>(data, root->pLeft, gt);
+      return root->pLeft;
     }
   }
 }
 
+struct Person
+{
+  string name;
+  int age;
+};
+
 int main()
 {
-  ;
+
+  // the lambda function to compare the persons
+  auto gt = [](Person const &a, Person const &b)
+  { return a.age > b.age; };
+
+  // insert the persons
+
+  shared_ptr<Node<Person>> root = nullptr;
+
+  insert<Person>(Person{"Juan", 20}, root, gt);
+  insert<Person>(Person{"Pedro", 30}, root, gt);
+  insert<Person>(Person{"Maria", 25}, root, gt);
+  insert<Person>(Person{"Ana", 35}, root, gt);
+  return 0;
 }
