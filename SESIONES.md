@@ -29,6 +29,7 @@
     * [Lista Doble](./ejemplos/listas/lista_doble/)
     * [Algoritmo de la burbuja]
     * [Algoritmo de búsqueda en listas ordenadas]
+    * [Árbol binario](./ejemplos/arboles/binarios/)
 
  * **Tests unitarios**
     * [Google Tests](./ejemplos/tests/) 
