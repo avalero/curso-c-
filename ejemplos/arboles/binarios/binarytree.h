@@ -19,6 +19,7 @@ struct Node
   shared_ptr<T> pData;
   shared_ptr<Node<T>> pLeft;
   shared_ptr<Node<T>> pRight;
+  shared_ptr<Node<T>> pParent;
 };
 
 /**
@@ -26,6 +27,7 @@ struct Node
  * @param data The data to insert
  * @param root The root of the binary tree
  * @param gt The function to compare the data
+ * @param parent The parent of the new node
  * @return The new node
  * @tparam T The type of the data
  * @example auto root = insert(5, nullptr);
@@ -34,25 +36,29 @@ struct Node
  *
  */
 template <typename T>
-shared_ptr<Node<T>> insert(T const &data, shared_ptr<Node<T>> &root, function<bool(T const &, T const &)> gt = [](T const &a, T const &b)
-                                                                     { return a > b; })
+shared_ptr<Node<T>> insert(T const &data, shared_ptr<Node<T>> &pRoot, function<bool(T const &, T const &)> gt = [](T const &a, T const &b)
+                                                                      { return a > b; },
+                           shared_ptr<Node<T>> pParent = nullptr)
 {
-  if (root == nullptr)
+  if (pRoot == nullptr)
   {
-    root = make_shared<Node<T>>(Node<T>(data));
+    pRoot = make_shared<Node<T>>(Node<T>(data));
+    pRoot->pParent = pParent; // Set the parent of the newly created node
   }
   else
   {
-    if (gt(data, *root->pData))
+    if (gt(data, *pRoot->pData))
     {
-      insert<T>(data, root->pRight, gt);
+      // Recursive call to insert on the right subtree
+      insert<T>(data, pRoot->pRight, gt, pRoot); // Pass current root as parent for the right child
     }
     else
     {
-      insert<T>(data, root->pLeft, gt);
+      // Recursive call to insert on the left subtree
+      insert<T>(data, pRoot->pLeft, gt, pRoot); // Pass current root as parent for the left child
     }
   }
-  return root;
+  return pRoot;
 }
 
 template <typename T>

@@ -23,7 +23,7 @@ enable_testing()
 add_executable(
   runTests
   main.cpp
-  push_test.cpp
+  insert_test.cpp
 )
 target_link_libraries(
   runTests

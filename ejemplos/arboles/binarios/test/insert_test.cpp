@@ -1,7 +1,7 @@
 #include <gtest/gtest.h>
 #include "../binarytree.h"
 
-TEST(BinaryTreeTest, PushTest)
+TEST(BinaryTreeTest, InsertTest)
 {
   // Create a binary tree
   shared_ptr<Node<int>> root = nullptr;
@@ -19,6 +19,13 @@ TEST(BinaryTreeTest, PushTest)
   EXPECT_EQ(*root->pLeft->pLeft->pData, 2);
   EXPECT_EQ(*root->pLeft->pRight->pData, 4);
   EXPECT_EQ(*root->pRight->pLeft->pData, 6);
+
+  // check parents
+  EXPECT_EQ(root->pLeft->pParent, root);
+  EXPECT_EQ(root->pRight->pParent, root);
+  EXPECT_EQ(root->pLeft->pLeft->pParent, root->pLeft);
+  EXPECT_EQ(root->pLeft->pRight->pParent, root->pLeft);
+  EXPECT_EQ(root->pRight->pLeft->pParent, root->pRight);
 }
 
 TEST(BinaryTreeTest, PushWithLambda)

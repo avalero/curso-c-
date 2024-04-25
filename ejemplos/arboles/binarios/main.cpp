@@ -20,9 +20,9 @@ int main()
 
   shared_ptr<Node<Person>> root = nullptr;
 
-  root = insert<Person>(Person{"Juan", 20}, root, gt);
-  root = insert<Person>(Person{"Pedro", 30}, root, gt);
-  root = insert<Person>(Person{"Maria", 25}, root, gt);
-  root = insert<Person>(Person{"Ana", 35}, root, gt);
+  insert<Person>(Person{"Juan", 20}, root, gt, nullptr);
+  insert<Person>(Person{"Pedro", 30}, root, gt, nullptr);
+  insert<Person>(Person{"Maria", 25}, root, gt);
+  insert<Person>(Person{"Ana", 35}, root, gt);
   return 0;
 }
