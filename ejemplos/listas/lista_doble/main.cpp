@@ -1,6 +1,7 @@
 #include <memory>
 #include <functional>
 #include <iostream>
+#include "tictoc.h"
 
 using namespace std;
 
@@ -41,6 +42,22 @@ void push_back(shared_ptr<Node<T>> &pHead, T const &data)
 }
 
 template <typename T>
+void push_front(shared_ptr<Node<T>> &pHead, T const &data)
+{
+  // Create the new node with the current head as its next node.
+  auto newHead = make_shared<Node<T>>(data, nullptr, pHead);
+
+  // If the list isn't empty, set the previous pointer of the existing head.
+  if (pHead)
+  {
+    pHead->pPrev = newHead;
+  }
+
+  // The new node becomes the new head of the list.
+  pHead = newHead;
+}
+
+template <typename T>
 void swapNodes(shared_ptr<Node<T>> &a, shared_ptr<Node<T>> &b)
 {
   auto temp = a->pData;
@@ -49,7 +66,7 @@ void swapNodes(shared_ptr<Node<T>> &a, shared_ptr<Node<T>> &b)
 }
 
 template <typename T>
-void bubbleSort(shared_ptr<Node<T>> &head, function<bool(shared_ptr<T>, shared_ptr<T>)> gt)
+void bubbleSort(shared_ptr<Node<T>> &head, function<bool(T const &, T const &)> gt)
 {
   bool swapped;
   do
@@ -57,7 +74,7 @@ void bubbleSort(shared_ptr<Node<T>> &head, function<bool(shared_ptr<T>, shared_p
     swapped = false;
     for (auto p = head; p != nullptr && p->pNext != nullptr; p = p->pNext)
     {
-      if (gt(p->pData, p->pNext->pData))
+      if (gt(*(p->pData), *(p->pNext->pData)))
       {
         swapNodes(p, p->pNext);
         swapped = true;
@@ -69,14 +86,24 @@ void bubbleSort(shared_ptr<Node<T>> &head, function<bool(shared_ptr<T>, shared_p
 template <typename T>
 shared_ptr<Node<T>> binarySearch(shared_ptr<Node<T>> head, shared_ptr<Node<T>> tail, T const &key)
 {
+  if (!head)
+    return nullptr; // If the head is null, return immediately.
+
   auto start = head;
-  auto end = tail;
+  auto end = tail ? tail : head; // If tail is nullptr, start from head to find the last node.
+
+  // Find the last node if tail is not provided.
+  while (end->pNext)
+  {
+    end = end->pNext;
+  }
 
   while (start != nullptr && end != nullptr && start != end && start->pNext != end)
   {
     auto mid = start;
     auto temp = start;
 
+    // Advance `mid` to the middle between `start` and `end`.
     while (temp != end && temp->pNext != end)
     {
       temp = temp->pNext->pNext;
@@ -90,8 +117,8 @@ shared_ptr<Node<T>> binarySearch(shared_ptr<Node<T>> head, shared_ptr<Node<T>> t
     {
       return mid;
     }
-    else if (*mid->pData < key)
-    {
+    else if (*mid->pData > key)
+    { // Adjust comparison for descending order
       start = mid->pNext;
     }
     else
@@ -100,11 +127,11 @@ shared_ptr<Node<T>> binarySearch(shared_ptr<Node<T>> head, shared_ptr<Node<T>> t
     }
   }
 
+  // Check at the boundaries if the loop exits without finding the key.
   if (start && *start->pData == key)
   {
     return start;
   }
-
   if (end && *end->pData == key)
   {
     return end;
@@ -119,19 +146,32 @@ struct Person
   int age;
 };
 
-int main()
+// pass size as argument
+int main(int argc, char const *argv[])
 {
-  shared_ptr<Node<Person>> pHead = make_shared<Node<Person>>(Person{"John", 30});
-  push_back(pHead, Person{"Maria", 35});
-  push_back(pHead, Person{"Luis", 21});
+  srand(time(0));
+  auto size = argc > 1 ? atoi(argv[1]) : 100;
+  shared_ptr<Node<int>> head = nullptr;
+  cout << "Creando lista de " << size << " elementos ..." << endl;
 
-  forEach<Person>(pHead, [](Person const &p)
-                  { cout << p.name << "-" << p.age << endl; });
+  TicToc clock;
+  clock.tic();
+  for (int i = 0; i <= size; i++)
+  {
+    push_front<int>(head, i);
+    // cout << "Added: " << i << endl; // Debug output to see progress
+  }
+  cout << "Tiempo transcurrido: " << clock.toc() << " ms" << endl;
 
-  bubbleSort<Person>(pHead, [](shared_ptr<Person> a, shared_ptr<Person> b)
-                     { return a->age > b->age; });
+  cout << "Lista creada" << endl;
 
-  cout << "After sorting:" << endl;
-  forEach<Person>(pHead, [](Person const &p)
-                  { cout << p.name << "-" << p.age << endl; });
+  auto elem = rand() % size;
+
+  cout << "Searching for element: " << elem << endl; // Debug output
+  clock.tic();
+  auto p = binarySearch<int>(head, nullptr, elem);
+  cout << "Element " << (p ? "found" : "not found") << endl;
+  cout << "Tiempo transcurrido: " << clock.toc() << " ms" << endl;
+
+  return 0;
 }
