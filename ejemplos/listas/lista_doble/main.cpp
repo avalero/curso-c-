@@ -41,52 +41,82 @@ void push_back(shared_ptr<Node<T>> &pHead, T const &data)
 }
 
 template <typename T>
+void swapNodes(shared_ptr<Node<T>> &a, shared_ptr<Node<T>> &b)
+{
+  auto temp = a->pData;
+  a->pData = b->pData;
+  b->pData = temp;
+}
+
+template <typename T>
 void bubbleSort(shared_ptr<Node<T>> &head, function<bool(shared_ptr<T>, shared_ptr<T>)> gt)
 {
   bool swapped;
-  shared_ptr<Node<T>> p;
-  shared_ptr<Node<T>> lptr = nullptr;
-
-  if (!head)
-    return;
-
   do
   {
     swapped = false;
-    p = head;
-
-    while (p->pNext != lptr)
+    for (auto p = head; p != nullptr && p->pNext != nullptr; p = p->pNext)
     {
       if (gt(p->pData, p->pNext->pData))
       {
         swapNodes(p, p->pNext);
         swapped = true;
       }
-      p = p->pNext;
     }
-    lptr = p;
   } while (swapped);
 }
 
 template <typename T>
-void swapNodes(shared_ptr<Node<T>> &a, shared_ptr<Node<T>> &b)
+shared_ptr<Node<T>> binarySearch(shared_ptr<Node<T>> head, shared_ptr<Node<T>> tail, T const &key)
 {
-  // Swap the data held by the nodes
-  auto temp = a->pData;
-  a->pData = b->pData;
-  b->pData = temp;
+  auto start = head;
+  auto end = tail;
+
+  while (start != nullptr && end != nullptr && start != end && start->pNext != end)
+  {
+    auto mid = start;
+    auto temp = start;
+
+    while (temp != end && temp->pNext != end)
+    {
+      temp = temp->pNext->pNext;
+      if (temp)
+      {
+        mid = mid->pNext;
+      }
+    }
+
+    if (*mid->pData == key)
+    {
+      return mid;
+    }
+    else if (*mid->pData < key)
+    {
+      start = mid->pNext;
+    }
+    else
+    {
+      end = mid->pPrev;
+    }
+  }
+
+  if (start && *start->pData == key)
+  {
+    return start;
+  }
+
+  if (end && *end->pData == key)
+  {
+    return end;
+  }
+
+  return nullptr; // Key not found
 }
 
 struct Person
 {
   string name;
   int age;
-
-  friend ostream &operator<<(ostream &os, const Person &p)
-  {
-    os << p.name << "-" << p.age;
-    return os;
-  }
 };
 
 int main()
