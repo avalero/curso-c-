@@ -15,29 +15,30 @@ struct Person
 // pass size as argument
 int main(int argc, char const *argv[])
 {
-  srand(time(0));
-  auto size = argc > 1 ? atoi(argv[1]) : 100;
-  shared_ptr<Node<int>> head = nullptr;
-  cout << "Creando arbol de " << size << " elementos ..." << endl;
 
-  TicToc clock;
-  clock.tic();
-  for (int i = 0; i <= size / 2; i++)
-  {
-    insert<int>(size / 2 - i, head);
-    insert<int>(size / 2 + i, head);
-  }
-  cout << "Tiempo transcurrido: " << clock.toc() << " ms" << endl;
+  auto head = make_shared<Node<int>>(Node<int>(5));
+  insert<int>(3, head);
+  insert<int>(8, head);
+  insert<int>(1, head);
+  insert<int>(4, head);
+  insert<int>(7, head);
 
-  cout << "Arbol creado" << endl;
+  forEachPostOrder<int>(head, [](shared_ptr<Node<int>> node)
+                        { cout << *(node->pData) << endl; });
 
-  auto elem = rand() % size;
+  forEachPostOrder<int>(head, [](shared_ptr<Node<int>> node)
+                        { node->pData = make_shared<int>(*(node->pData) * 2); });
 
-  cout << "Searching for element: " << elem << endl; // Debug output
-  clock.tic();
-  auto p = find<int>(elem, head);
-  cout << "Element " << (p ? "found" : "not found") << endl;
-  cout << "Tiempo transcurrido: " << clock.toc() << " ms" << endl;
+  forEachPostOrder<int>(head, [](shared_ptr<Node<int>> node)
+                        { cout << *(node->pData) << endl; });
+
+  // auto elem = rand() % size;
+
+  // cout << "Searching for element: " << elem << endl; // Debug output
+  // clock.tic();
+  // auto p = find<int>(elem, head);
+  // cout << "Element " << (p ? "found" : "not found") << endl;
+  // cout << "Tiempo transcurrido: " << clock.toc() << " ms" << endl;
 
   return 0;
 }

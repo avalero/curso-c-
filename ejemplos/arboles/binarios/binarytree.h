@@ -62,6 +62,17 @@ shared_ptr<Node<T>> insert(T const &data, shared_ptr<Node<T>> &pRoot, function<b
 }
 
 template <typename T>
+void forEachPostOrder(shared_ptr<Node<T>> pHead, function<void(shared_ptr<Node<T>> const &)> f)
+{
+  if (pHead == nullptr)
+    return;
+
+  forEachPostOrder<T>(pHead->pLeft, f);
+  forEachPostOrder<T>(pHead->pRight, f);
+  f(pHead);
+}
+
+template <typename T>
 shared_ptr<Node<T>> find(T const &data, shared_ptr<Node<T>> const &root, function<bool(T const &, T const &)> f = [](T const &a, T const &b)
                                                                          { return a == b; },
                          function<bool(T const &, T const &)> gt = [](T const &a, T const &b)
