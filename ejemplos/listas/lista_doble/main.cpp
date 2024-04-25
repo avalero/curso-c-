@@ -151,8 +151,10 @@ int main(int argc, char const *argv[])
 {
   srand(time(0));
   auto size = argc > 1 ? atoi(argv[1]) : 100;
+  auto elem = argc > 2 ? atoi(argv[2]) : rand() % size;
   shared_ptr<Node<int>> head = nullptr;
   cout << "Creando lista de " << size << " elementos ..." << endl;
+  cout << "Elemento a buscar: " << elem << endl;
 
   TicToc clock;
   clock.tic();
@@ -164,8 +166,6 @@ int main(int argc, char const *argv[])
   cout << "Tiempo transcurrido: " << clock.toc() << " ms" << endl;
 
   cout << "Lista creada" << endl;
-
-  auto elem = rand() % size;
 
   cout << "Searching for element: " << elem << endl; // Debug output
   clock.tic();
