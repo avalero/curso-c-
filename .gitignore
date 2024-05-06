@@ -31,3 +31,5 @@ Makefile
 *.suo
 *.vcxproj
 *.vcxproj.filters
+ejemplos/string/MyProject
+.vscode/c_cpp_properties.json
