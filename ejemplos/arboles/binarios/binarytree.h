@@ -68,8 +68,10 @@ void forEachPostOrder(shared_ptr<Node<T>> pHead, function<void(shared_ptr<Node<T
     return;
 
   forEachPostOrder<T>(pHead->pLeft, f);
-  forEachPostOrder<T>(pHead->pRight, f);
   f(pHead);
+  forEachPostOrder<T>(pHead->pRight, f);
+
+  return;
 }
 
 template <typename T>

@@ -22,15 +22,28 @@ int main(int argc, char const *argv[])
   insert<int>(1, head);
   insert<int>(4, head);
   insert<int>(7, head);
+  insert<int>(9, head);
+  insert<int>(2, head);
+  insert<int>(6, head);
+  insert<int>(10, head);
 
-  forEachPostOrder<int>(head, [](shared_ptr<Node<int>> node)
-                        { cout << *(node->pData) << endl; });
+  // forEachPostOrder<int>(head, [](shared_ptr<Node<int>> node)
+  //                       { cout << *(node->pData) << endl; });
 
-  forEachPostOrder<int>(head, [](shared_ptr<Node<int>> node)
-                        { node->pData = make_shared<int>(*(node->pData) * 2); });
+  // forEachPostOrder<int>(head, [](shared_ptr<Node<int>> node)
+  //                       { node->pData = make_shared<int>(*(node->pData) * 2); });
 
-  forEachPostOrder<int>(head, [](shared_ptr<Node<int>> node)
-                        { cout << *(node->pData) << endl; });
+  // forEachPostOrder<int>(head, [](shared_ptr<Node<int>> node)
+  //                       { cout << *(node->pData) << endl; });
+
+  vector<int> numeros;
+  forEachPostOrder<int>(head, [&numeros](shared_ptr<Node<int>> node)
+                        { numeros.push_back(*(node->pData)); });
+
+  for (auto n : numeros)
+  {
+    cout << n << endl;
+  }
 
   // auto elem = rand() % size;
 

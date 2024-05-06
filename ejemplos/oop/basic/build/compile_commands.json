@@ -1,0 +1,14 @@
+[
+{
+  "directory": "/home/avalero/.local/share/Trash/files/basic/build",
+  "command": "/usr/bin/g++   -g -std=gnu++20 -o CMakeFiles/BasicOOP.dir/main.cpp.o -c /home/avalero/.local/share/Trash/files/basic/main.cpp",
+  "file": "/home/avalero/.local/share/Trash/files/basic/main.cpp",
+  "output": "CMakeFiles/BasicOOP.dir/main.cpp.o"
+},
+{
+  "directory": "/home/avalero/.local/share/Trash/files/basic/build",
+  "command": "/usr/bin/g++   -g -std=gnu++20 -o CMakeFiles/BasicOOP.dir/Person.cpp.o -c /home/avalero/.local/share/Trash/files/basic/Person.cpp",
+  "file": "/home/avalero/.local/share/Trash/files/basic/Person.cpp",
+  "output": "CMakeFiles/BasicOOP.dir/Person.cpp.o"
+}
+]
