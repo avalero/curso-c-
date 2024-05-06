@@ -7,6 +7,9 @@ using namespace std;
 
 class Person
 {
+  friend bool operator<(Person const &p1, Person const &p2);
+  friend ostream &operator<<(ostream &os, Person const &p);
+
 public:
   // constructor
   Person();
@@ -27,5 +30,8 @@ private:
   int age;
   string telephone;
 };
+
+bool operator<(Person const &p1, Person const &p2);
+ostream &operator<<(ostream &os, Person const &p);
 
 #endif

@@ -35,3 +35,16 @@ void Person::setTelephone(string const &t)
     throw std::runtime_error("Telephone must have between 9 and 13 characters");
   telephone = t;
 }
+
+bool operator<(Person const &p1, Person const &p2)
+{
+  return p1.age < p2.age;
+}
+
+ostream &operator<<(ostream &os, Person const &p)
+{
+  os << "Name: " << p.name << endl;
+  os << "Age: " << p.age << endl;
+  os << "Telephone: " << p.telephone << endl;
+  return os;
+}
