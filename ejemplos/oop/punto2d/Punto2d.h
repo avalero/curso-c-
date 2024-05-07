@@ -12,12 +12,11 @@ public:
   double getX() const { return x; };
   double getY() const { return y; };
   double getR() const { return sqrt(x * x + y * y); };
-  double getTheta() const { return atan2(y, x); };
+  double getTheta() const;
 
   void setX(double a);
   void setY(double b);
-  void setR(double r);
-  void setTheta(double theta);
+  void setPolar(double r, double theta);
 
   double getModule() const { return sqrt(x * x + y * y); };
 

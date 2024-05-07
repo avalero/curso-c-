@@ -23,22 +23,31 @@ Punto2d::Punto2d(double a, double b, bool polar)
 
 void Punto2d::setX(double a)
 {
-  x = 0;
+  x = a;
 }
 
 void Punto2d::setY(double b)
 {
-  y = 0;
+  y = b;
 }
 
-void Punto2d::setR(double r)
+void Punto2d::setPolar(double r, double theta)
 {
-  x = 0;
-  y = 0;
+  x = r * cos(theta);
+  y = r * sin(theta);
 }
 
-void Punto2d::setTheta(double theta)
+double Punto2d::getTheta() const
 {
-  x = 0;
-  y = 0;
+  if (y == 0)
+    return 0;
+  if (x == 0)
+  {
+    if (y > 0)
+      return M_PI / 2;
+    else
+      return -M_PI / 2;
+  }
+
+  return atan2(y, x);
 }

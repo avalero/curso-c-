@@ -13,7 +13,7 @@ TEST(DefaultConstructor, DefaultConstructor_def_Test)
   EXPECT_NEAR(0, p.getModule(), 0.0001);
 }
 
-TEST(ParametrizedConstructor, ParametrizedConstructor_def_Test)
+TEST(ParametrizedConstructor1, ParametrizedConstructor_def_Test)
 {
   Punto2d p(3, 4);
   EXPECT_NEAR(3, p.getX(), 0.0001);
@@ -23,7 +23,7 @@ TEST(ParametrizedConstructor, ParametrizedConstructor_def_Test)
   EXPECT_NEAR(sqrt(3 * 3 + 4 * 4), p.getModule(), 0.0001);
 }
 
-TEST(ParametrizedConstructor, ParametrizedConstructor_polar_false_Test)
+TEST(ParametrizedConstructor2, ParametrizedConstructor_polar_false_Test)
 {
   Punto2d p(3, 4, false);
   EXPECT_NEAR(3, p.getX(), 0.0001);
@@ -33,11 +33,34 @@ TEST(ParametrizedConstructor, ParametrizedConstructor_polar_false_Test)
   EXPECT_NEAR(sqrt(3 * 3 + 4 * 4), p.getModule(), 0.0001);
 }
 
-TEST(ParametrizedConstructor, ParametrizedConstructor_polar_true_Test)
+TEST(ParametrizedConstructor3, ParametrizedConstructor_polar_true_Test)
 {
   Punto2d p(3, 4, true);
   EXPECT_NEAR(3, p.getR(), 0.0001);
-  // EXPECT_NEAR(4, p.getTheta(), 0.0001);
+  EXPECT_NEAR(4, p.getTheta(), 0.0001);
+  EXPECT_NEAR(3 * cos(4), p.getX(), 0.0001);
+  EXPECT_NEAR(3 * sin(4), p.getY(), 0.0001);
+  EXPECT_NEAR(3, p.getModule(), 0.0001);
+}
+
+TEST(ParametrizedConstructor4, set_cartesians)
+{
+  Punto2d p;
+  p.setX(3);
+  p.setY(4);
+  EXPECT_NEAR(3, p.getX(), 0.0001);
+  EXPECT_NEAR(4, p.getY(), 0.0001);
+  EXPECT_NEAR(sqrt(3 * 3 + 4 * 4), p.getR(), 0.0001);
+  EXPECT_NEAR(3 / sqrt(3 * 3 + 4 * 4), cos(p.getTheta()), 0.0001);
+  EXPECT_NEAR(sqrt(3 * 3 + 4 * 4), p.getModule(), 0.0001);
+}
+
+TEST(ParametrizedConstructor4, setPolar)
+{
+  Punto2d p;
+  p.setPolar(3, 4);
+  EXPECT_NEAR(3, p.getR(), 0.0001);
+  EXPECT_NEAR(4, p.getTheta(), 0.0001);
   EXPECT_NEAR(3 * cos(4), p.getX(), 0.0001);
   EXPECT_NEAR(3 * sin(4), p.getY(), 0.0001);
   EXPECT_NEAR(3, p.getModule(), 0.0001);
