@@ -10,9 +10,11 @@ int main()
 
   RegularPolygon cuadrado(4, 5);
   cout << "Perimeter: " << cuadrado.getPerimeter() << endl;
+  cout << "Area: " << cuadrado.getArea() << endl;
 
   Cuadrado cuadrado2(6);
   cout << "Perimeter: " << cuadrado2.getPerimeter() << endl;
+  cout << "Area: " << cuadrado2.getArea() << endl;
 
   return 0;
 }
