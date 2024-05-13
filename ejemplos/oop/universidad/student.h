@@ -14,7 +14,7 @@ class Student : public Person, public enable_shared_from_this<Student>
 {
 public:
   Student();
-  Student(string &name);
+  Student(string const &name);
 
   void addCourse(shared_ptr<Course> course);
   vector<shared_ptr<Course>> getCourses() const;

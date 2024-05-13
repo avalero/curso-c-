@@ -4,7 +4,7 @@ Teacher::Teacher() : Person()
 {
 }
 
-Teacher::Teacher(string &name)
+Teacher::Teacher(string const &name)
     : Person(name)
 {
 }

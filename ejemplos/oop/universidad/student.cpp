@@ -5,7 +5,7 @@ Student::Student()
 {
 }
 
-Student::Student(string &name)
+Student::Student(string const &name)
     : Person(name)
 {
 }

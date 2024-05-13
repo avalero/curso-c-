@@ -13,7 +13,7 @@ class Teacher : public Person, public enable_shared_from_this<Teacher>
 {
 public:
   Teacher();
-  Teacher(string &name);
+  Teacher(string const &name);
   void addCourse(shared_ptr<Course> course);
   vector<shared_ptr<Course>> getCourses() const;
 
