@@ -28,5 +28,3 @@ TEST_F(TeacherTest, AddCourse)
   EXPECT_EQ(1, teacher->getCourses().size());
   EXPECT_EQ("Physics", teacher->getCourses()[0]->getName());
 }
-
-// Additional tests can be added as necessary.

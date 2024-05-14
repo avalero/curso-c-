@@ -37,5 +37,3 @@ TEST_F(CourseTest, SetTeacher)
   course->setTeacher(teacher);
   EXPECT_EQ("Robert Lang", course->getTeacher()->getName());
 }
-
-// Additional tests can be added as necessary.
