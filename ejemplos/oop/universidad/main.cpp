@@ -4,12 +4,124 @@
 #include "student.h"
 #include "teacher.h"
 #include "course.h"
+#include "fstream"
 
 using namespace std;
 
 vector<shared_ptr<Student>> students;
 vector<shared_ptr<Teacher>> teachers;
 vector<shared_ptr<Course>> courses;
+
+void saveToFile(string fileName, vector<shared_ptr<Student>> students, vector<shared_ptr<Teacher>> teachers, vector<shared_ptr<Course>> courses)
+{
+  fstream file;
+  file.open(fileName, ios::out);
+  if (file.is_open())
+  {
+    for (auto student : students)
+      file << "(s " + student->getName() + ")\n";
+    for (auto teacher : teachers)
+      file << "(t " + teacher->getName() + ")\n";
+
+    for (auto course : courses)
+    {
+      file << "(c " + course->getName() + ")\n";
+
+      for (auto student : course->getStudents())
+      {
+        file << "(cs " + course->getName() + " " + student->getName() + ")\n";
+      }
+      if (auto teacher = course->getTeacher())
+      {
+        file << "(ct " + course->getName() + " " + teacher->getName() + ")\n";
+      }
+    }
+
+    file.close();
+  }
+  else
+  {
+    cout << "Error opening file" << endl;
+  }
+}
+
+void loadFromFile(string fileName, vector<shared_ptr<Student>> &students, vector<shared_ptr<Teacher>> &teachers, vector<shared_ptr<Course>> &courses)
+{
+  students.clear();
+  teachers.clear();
+  courses.clear();
+
+  fstream file;
+  file.open(fileName, ios::in);
+  if (file.is_open())
+  {
+    string line;
+    while (getline(file, line))
+    {
+      // add studente
+      if (line.starts_with("(s "))
+      {
+        string name = line.substr(3, line.size() - 4);
+        students.push_back(make_shared<Student>(Student(name)));
+      }
+      // add teacher
+      else if (line.starts_with("(t "))
+      {
+        string name = line.substr(3, line.size() - 4);
+        teachers.push_back(make_shared<Teacher>(name));
+      }
+      // add course
+      else if (line.starts_with("(c "))
+      {
+        string name = line.substr(3, line.size() - 4);
+        courses.push_back(make_shared<Course>(name));
+      }
+      // add student to course
+      else if (line.starts_with("(cs "))
+      {
+        string courseName = line.substr(4, line.find_last_of(' ') - 4);
+        string studentName = line.substr(line.find_last_of(' ') + 1, line.size() - line.find_last_of(' ') - 2);
+        for (auto course : courses)
+        {
+          if (course->getName() == courseName)
+          {
+            for (auto student : students)
+            {
+              if (student->getName() == studentName)
+              {
+                course->addStudent(student);
+              }
+            }
+          }
+        }
+      }
+      // add teacher to course
+      else if (line.starts_with("(ct "))
+      {
+        string courseName = line.substr(4, line.find_last_of(' ') - 4);
+        string teacherName = line.substr(line.find_last_of(' ') + 1, line.size() - line.find_last_of(' ') - 2);
+        for (auto course : courses)
+        {
+          if (course->getName() == courseName)
+          {
+            for (auto teacher : teachers)
+            {
+              if (teacher->getName() == teacherName)
+              {
+                course->setTeacher(teacher);
+              }
+            }
+          }
+        }
+      }
+    }
+    file.close();
+  }
+  else
+  {
+    cout << "Error opening file" << endl;
+  }
+}
 
 void createStudent()
 {
@@ -153,7 +265,9 @@ int main()
     cout << "8. List all Students\n";
     cout << "9. List all Courses\n";
     cout << "10. List all Teachers\n";
-    cout << "11. Exit\n";
+    cout << "11. Save to file\n";
+    cout << "12. Load from file\n";
+    cout << "13. Exit\n";
     cout << "Enter your choice: ";
     cin >> choice;
     cin.ignore();
@@ -191,6 +305,22 @@ int main()
       listTeachers();
       break;
     case 11:
+    {
+      string fileName;
+      cout << "Enter file name: ";
+      getline(cin, fileName);
+      saveToFile(fileName, students, teachers, courses);
+      break;
+    }
+    case 12:
+    {
+      string loadFileName;
+      cout << "Enter file name: ";
+      getline(cin, loadFileName);
+      loadFromFile(loadFileName, students, teachers, courses);
+      break;
+    }
+    case 13:
       return 0;
     default:
       cout << "Invalid choice, please try again.\n";

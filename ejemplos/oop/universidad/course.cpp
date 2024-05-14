@@ -1,5 +1,5 @@
 #include "course.h"
-
+#include <ostream>
 Course::Course()
 {
 }
@@ -43,7 +43,7 @@ shared_ptr<Teacher> Course::getTeacher() const
   return teacher;
 }
 
-ostream &operator<<(ostream &os, Course const &c)
+std::ostream &operator<<(std::ostream &os, Course const &c)
 {
   os << c.getName() << endl;
   os << "Students:" << endl;
