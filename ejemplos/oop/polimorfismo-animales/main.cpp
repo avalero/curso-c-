@@ -27,6 +27,7 @@ class Perro : public Animal
 public:
   Perro(string nombre) : Animal{nombre} {}
   void hago() const override;
+  void ladrar() const { cout << "guau" << endl; }
 };
 
 void Perro::hago() const
@@ -40,6 +41,7 @@ class Gato : public Animal
 public:
   Gato(string nombre) : Animal{nombre} {}
   void hago() const override;
+  void mauyar() const { cout << "miau" << endl; }
 };
 
 void Gato::hago() const
@@ -64,8 +66,22 @@ int main()
   vector<shared_ptr<Animal>> animales;
   animales.push_back(make_shared<Gato>(Gato{"sherlock"}));
   animales.push_back(make_shared<Perro>(Perro{"pippin"}));
+
+  // shared_ptr<Animal> miAnimal = make_shared<Gato>(Gato{"lili"});
+  // auto miGato = dynamic_cast<Gato *>(miAnimal.get());
+  // miGato->mauyar();
+
   for (auto animal : animales)
   {
     animal->hago();
+    auto unGato = dynamic_cast<Gato *>(animal.get());
+    if (unGato)
+      unGato->mauyar();
+    else
+    {
+      auto unPerro = dynamic_cast<Perro *>(animal.get());
+      if (unPerro)
+        unPerro->ladrar();
+    }
   }
 }
