@@ -4,6 +4,23 @@
 #include <iostream>
 using namespace std;
 
+bool removeNode(vector<shared_ptr<Node>> &nodes, shared_ptr<Node> node)
+{
+  for (auto it = nodes.begin(); it != nodes.end(); ++it)
+  {
+    if (*it == node)
+    {
+      nodes.erase(it);
+      for (auto &n : nodes)
+      {
+        n->removeEdge(node);
+      }
+      return true;
+    }
+  }
+  return false;
+}
+
 int main()
 {
   shared_ptr<Node> n1 = make_shared<Node>(1, 2);

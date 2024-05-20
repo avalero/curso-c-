@@ -33,6 +33,8 @@ public:
   void addEdge(Edge const &e);
   void setData(Point const &d);
 
+  bool removeEdge(shared_ptr<Node> const &node);
+
 private:
   bool edgeExists(Edge const &edg) const;
   Point data;

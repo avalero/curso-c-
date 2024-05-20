@@ -57,6 +57,19 @@ void Node::setData(Point const &d)
   data = d;
 }
 
+bool Node::removeEdge(shared_ptr<Node> const &node)
+{
+  for (auto it = edges.begin(); it != edges.end(); ++it)
+  {
+    if (it->node == node)
+    {
+      edges.erase(it);
+      return true;
+    }
+  }
+  return false;
+}
+
 ostream &operator<<(ostream &os, Point const &p)
 {
   os << "(" << p.x << ", " << p.y << ")";
