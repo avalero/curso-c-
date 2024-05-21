@@ -4,6 +4,7 @@
 #include <memory>
 #include <vector>
 #include <iostream>
+#include <functional>
 
 using namespace std;
 
@@ -15,8 +16,23 @@ struct Point
   double y;
 };
 
-struct Edge
+double operator-(Point const &a, Point const &b)
 {
+  return (a.x - b.x) * (a.x - b.x) + (a.y - b.y) * (a.y - b.y);
+}
+
+class Edge
+{
+public:
+  Edge(
+      shared_ptr<Node> n1,
+      shared_ptr<Node> n2,
+      function<double(shared_ptr<Node> const &, shared_ptr<Node> const &)> f = [](shared_ptr<Node> const &a, shared_ptr<Node> const &b)
+      { return 0; })
+  {
+    node = n2;
+    cost = f(n1, n2);
+  }
   shared_ptr<Node> node;
   double cost;
 };

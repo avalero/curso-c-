@@ -30,10 +30,13 @@ int main()
 
   vector<shared_ptr<Node>> nodes{n1, n2, n3, n4};
 
-  Edge e0{n1, 1};
-  Edge e1{n2, 2};
-  Edge e2{n3, 3};
-  Edge e3{n4, 4};
+  auto const_function = [](shared_ptr<Node> const &a, shared_ptr<Node> const &b)
+  { return b->getData() - a->getData(); };
+
+  Edge e0{n4, n1, const_function};
+  Edge e1{n1, n2, const_function};
+  Edge e2{n2, n3, const_function};
+  Edge e3{n3, n4, const_function};
 
   n1->addEdge(e1);
   n2->addEdge(e2);
