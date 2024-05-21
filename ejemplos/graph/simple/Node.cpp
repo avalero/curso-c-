@@ -1,9 +1,16 @@
 #include "Node.h"
 #include <exception>
-
+#include <limits>
 using namespace std;
 
-Node::Node(double x, double y) : data{Point{x, y}} {}
+// double max
+// The largest finite floating-point value representable by the type double.
+
+Node::Node(double x, double y) : data{Point{x, y}},
+                                 pathCost{numeric_limits<double>::max()},
+                                 previous{nullptr}
+{
+}
 
 Edge Node::getEdge(int i) const
 {

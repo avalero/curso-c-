@@ -48,6 +48,10 @@ public:
   void addEdge(vector<Edge> const &eds);
   void addEdge(Edge const &e);
   void setData(Point const &d);
+  void setPathCost(double c) { pathCost = c; };
+  double getPathCost() const { return pathCost; };
+  void setPrevious(shared_ptr<Node> const &p) { previous = p; };
+  shared_ptr<Node> getPrevious() const { return previous; };
 
   bool removeEdge(shared_ptr<Node> const &node);
 
@@ -55,6 +59,8 @@ private:
   bool edgeExists(Edge const &edg) const;
   Point data;
   vector<Edge> edges;
+  double pathCost;
+  shared_ptr<Node> previous;
 };
 
 ostream &operator<<(ostream &os, Point const &p);
