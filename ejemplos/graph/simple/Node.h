@@ -16,10 +16,7 @@ struct Point
   double y;
 };
 
-double operator-(Point const &a, Point const &b)
-{
-  return (a.x - b.x) * (a.x - b.x) + (a.y - b.y) * (a.y - b.y);
-}
+double operator-(Point const &a, Point const &b);
 
 class Edge
 {

@@ -124,4 +124,7 @@ int main()
   {
     cout << *node << endl;
   }
+
+  // compute dijkstra
+  computeDijkstra(nodes, n1);
 }
