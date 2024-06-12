@@ -364,3 +364,39 @@ Al igual que los `std::set`, `std::array` y `std::vector` el `std::string` puede
 
 ## Para completar
   * [Referencia del tipo string](http://www.cplusplus.com/reference/string/string/)
+
+
+## Ejercicios
+
+
+1. **Reemplazar Caracteres:**
+   - Declara una cadena de texto y reemplaza todos los espacios por guiones bajos `_`.
+
+2. **Concatenar y Imprimir:**
+   - Declara tres cadenas de texto y concaténalas en una sola cadena usando el operador `+`. Luego, imprime la cadena resultante.
+
+3. **Buscar y Reemplazar Subcadena:**
+   - Declara una cadena de texto y busca una subcadena específica. Si se encuentra, reemplázala por otra subcadena.
+
+4. **Invertir una Cadena:**
+   - Declara una cadena de texto e inviértela.
+
+5. **Contar Vocales:**
+   - Declara una cadena de texto y cuenta cuántas vocales contiene.
+
+6. **Comparar Cadenas:**
+   - Declara dos cadenas de texto y compara si son iguales.
+
+7. **Extraer Subcadena hasta un Carácter:**
+   - Declara una cadena de texto y extrae una subcadena hasta encontrar un carácter específico.
+
+8. **Eliminar Vocales:**
+   - Declara una cadena de texto y elimina todas las vocales.
+
+9. **Convertir a Mayúsculas:**
+   - Declara una cadena de texto y conviértela toda a mayúsculas.
+
+10. **Contar Palabras:**
+    - Declara una cadena de texto y cuenta cuántas palabras contiene (considerando espacios como separadores).
+
+Estos ejercicios te permitirán practicar las funcionalidades del `std::string` en C++ de manera efectiva.
