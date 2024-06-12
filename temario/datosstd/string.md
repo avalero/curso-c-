@@ -13,6 +13,14 @@ o bien, en C++ moderno,
 std::string name{"Alberto"};
 ``` 
 
+O incluyendo `using namespace std`;
+
+```cpp
+#include <string>
+usign namespace std;
+string name{"Alberto"}
+```
+
 Al igual que con cualquier otro tipo de variable, el tipo _string_ puede ser constante, por lo que la asociación entre la variable y su valor no puede ser modificada y debe ser inicializado cuando se declara.
 
 ```cpp
