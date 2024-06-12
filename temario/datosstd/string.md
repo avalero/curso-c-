@@ -17,7 +17,7 @@ O incluyendo `using namespace std`;
 
 ```cpp
 #include <string>
-usign namespace std;
+using namespace std;
 string name{"Alberto"}
 ```
 
